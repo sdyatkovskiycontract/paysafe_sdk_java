@@ -43,6 +43,18 @@ public class Error implements DomainObject {
   /** The links. */
   private ArrayList<Link> links;
 
+  public static Error fromString(String code, String msg) {
+    return new Error(code, msg);
+  }
+
+  private Error(String code, String message) {
+    this.code = code != null ? code : "";
+    this.message = message != null ? message : "";
+    this.details = new ArrayList<String>();
+    this.fieldErrors = new ArrayList<FieldError>();
+    this.links = new ArrayList<Link>();
+  }
+
   /**
    * Gets the code.
    *
@@ -134,4 +146,8 @@ public class Error implements DomainObject {
     this.links = links;
   }
 
+  @Override
+  public String toString() {
+    return String.format("%s: %s", getCode(), getMessage());
+  }
 }

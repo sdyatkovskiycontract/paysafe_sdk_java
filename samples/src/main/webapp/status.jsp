@@ -1,4 +1,5 @@
 <%@ page import="com.paysafe.cardpayments.Authorization" %>
+<%@ page import="com.paysafe.common.Id" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,12 +13,12 @@
 			request.getAttribute("payment") != null && request.getAttribute("payment").toString().equals("success")) { %>
 			<h2>Successfully completed payment.</h2>
 			
-			<% if (request.getAttribute("authId") != null ) { 
-				Authorization authId = (Authorization) request.getAttribute("authId");
+			<% if (request.getAttribute("authId") != null ) {
+				Id<Authorization> authId = (Id<Authorization>) request.getAttribute("authId");
 			%>
-				<h3>AuthID: <% out.print(authId.getId()); %></h3>
+				<h3>AuthID: <% out.print(authId); %></h3>
 			<% } %>
-						  
+
 		<% } %>
 	</body>
 </html>

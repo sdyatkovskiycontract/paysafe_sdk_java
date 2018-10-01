@@ -27,6 +27,7 @@ import javax.servlet.*;
 import com.paysafe.Environment;
 import com.paysafe.PaysafeApiClient;
 import com.paysafe.cardpayments.Authorization;
+import com.paysafe.common.Error;
 import com.paysafe.common.PaysafeException;
 
 public class CardPaymentSimpleServlet extends PaysafeServletBase {
@@ -88,7 +89,7 @@ public class CardPaymentSimpleServlet extends PaysafeServletBase {
       isSuccess = true;
 
     } catch (PaysafeException ev) {
-      request.setAttribute("error", ev.getMessage());
+      request.setAttribute("error", Error.fromString(ev.getCode(), ev.getMessage()));
     }
 
     // Create a new card payment request
