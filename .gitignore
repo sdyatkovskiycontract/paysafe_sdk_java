@@ -9,3 +9,5 @@ reports
 .nb-gradle/
 .nb-gradle-properties
 .idea/
+PaysafeSDK/out/
+samples/out/
